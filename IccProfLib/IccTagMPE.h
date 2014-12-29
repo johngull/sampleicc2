@@ -254,9 +254,6 @@ public:
 
 protected:
   icElemTypeSignature m_sig;
-  icUInt32Number m_nReserved;
-  icUInt16Number m_nInputChannels;
-  icUInt16Number m_nOutputChannels;
   icUInt32Number m_nSize;
   icUInt8Number *m_pData;
 };

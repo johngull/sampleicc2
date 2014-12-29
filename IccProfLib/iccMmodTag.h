@@ -43,5 +43,9 @@ private:
 
 };
 
+#ifdef USESAMPLEICCNAMESPACE
+}
+#endif
+
 #endif	/* ICCMMODTAG_H */
 

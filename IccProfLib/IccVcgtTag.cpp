@@ -396,7 +396,7 @@ icValidateStatus IccVCGTTag::Validate(icTagSignature sig, std::string &sReport, 
 *  channels count
 *****************************************************************************
 */
-icUInt16Number IccVCGTTag::channels()
+icUInt16Number IccVCGTTag::channels() const
 {
     return channels_;
 }
@@ -411,7 +411,7 @@ icUInt16Number IccVCGTTag::channels()
 *  elements count
 *****************************************************************************
 */
-icUInt16Number IccVCGTTag::entryCount()
+icUInt16Number IccVCGTTag::entryCount() const
 {
     return entryCount_;
 }

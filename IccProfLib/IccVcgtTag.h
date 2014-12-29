@@ -47,8 +47,8 @@ public:
     
     virtual void Describe(std::string &sDescription);
     
-    icUInt16Number channels();
-    icUInt16Number entryCount();
+    icUInt16Number channels() const;
+    icUInt16Number entryCount() const;
 
     virtual icValidateStatus Validate(icTagSignature sig, std::string &sReport, const CIccProfile* pProfile=NULL) const;
 private:
