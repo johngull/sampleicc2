@@ -74,6 +74,9 @@
 #include "IccUtil.h"
 #include "IccProfile.h"
 
+#include "IccVcgtTag.h"
+#include "iccMmodTag.h"
+
 #ifdef USESAMPLEICCNAMESPACE
 namespace sampleICC {
 #endif
@@ -172,6 +175,12 @@ CIccTag* CIccSpecTagFactory::CreateTag(icTagTypeSignature tagSig)
 
     case icSigProfileSequceIdType:
       return new CIccTagProfileSequenceId;
+
+    case icSigVCGTType:
+      return new IccVCGTTag;
+      
+    case icSigMMODType:
+      return new iccMmodTag;
 
     case icSigScreeningType:
     case icSigUcrBgType:
@@ -373,6 +382,12 @@ const icChar* CIccSpecTagFactory::GetTagSigName(icTagSignature tagSig)
 
   case icSigSaturationRenderingIntentGamutTag:
     return "saturationRenderingIntentGamutTag";
+
+  case icSigVCGTType:
+      return "VCGTTag";
+      
+  case icSigMMODType:
+      return "MMODTag";
 
   default:
     return NULL;
