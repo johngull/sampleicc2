@@ -142,7 +142,7 @@ icFloatNumber CIccCurve::Find(icFloatNumber v,
 CIccTagCurve::CIccTagCurve(int nSize/*=0*/)
 {
   m_nSize = nSize;
-  if (m_nSize <0)
+  if (nSize <0)
     m_nSize = 0;
   if (m_nSize>0)
     m_Curve = (icFloatNumber*)calloc(nSize, sizeof(icFloatNumber));
@@ -442,7 +442,23 @@ void CIccTagCurve::SetSize(icUInt32Number nSize, icTagCurveSizeInit nSizeOpt/*=i
     if (!m_Curve)
       m_Curve = (icFloatNumber*)malloc(nSize*sizeof(icFloatNumber));
     else
-      m_Curve = (icFloatNumber*)realloc(m_Curve, nSize*sizeof(icFloatNumber));
+    {
+      icFloatNumber* newCurve = (icFloatNumber*)realloc(m_Curve, nSize*sizeof(icFloatNumber));
+      if(newCurve)
+          m_Curve = newCurve;
+      else
+      {
+          free(m_Curve);
+          m_Curve = NULL;
+      }
+    }
+
+    if(!m_Curve)
+    {
+        m_nSize = 0;
+        m_nMaxIndex = 0;
+        return;
+    }
 
     switch (nSizeOpt) {
     case icInitNone:

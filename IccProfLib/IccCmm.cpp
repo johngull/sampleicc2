@@ -3247,19 +3247,20 @@ CIccXform *CIccXformMpe::Create(CIccProfile *pProfile, bool bInput/* =true */, i
           else
             return NULL;
         }
-        if (pTag->GetType()==icSigMultiProcessElementType) {
+        if (pTag && pTag->GetType()==icSigMultiProcessElementType) {
           rv = new CIccXformMpe(pTag);
         }
         else {
           switch(pProfile->m_Header.pcs) {
-    case icSigXYZData:
-    case icSigLabData:
-      rv = new CIccXform3DLut(pTag);
+                case icSigXYZData:
+                case icSigLabData:
+                  rv = new CIccXform3DLut(pTag);
 
-    default:
-      break;
+                default:
+                  break;
           }
         }
+
       }
       break;
 

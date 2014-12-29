@@ -1484,7 +1484,9 @@ CIccMpeCurveSet &CIccMpeCurveSet::operator=(const CIccMpeCurveSet &curveSet)
   m_nReserved = m_nReserved;
 
   if (m_curve) {
-    delete [] m_curve;
+      for (icUInt16Number i=0; i<m_nInputChannels; i++)
+        delete m_curve[i];
+    free(m_curve);
   }
 
   if (curveSet.m_nInputChannels) {

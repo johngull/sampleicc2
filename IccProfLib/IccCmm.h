@@ -148,6 +148,7 @@ class ICCPROFLIB_API IIccCreateXformHint
 {
 public:
 	virtual const char *GetHintType() const=0;
+    virtual ~IIccCreateXformHint() {}
 };
 
 /**

@@ -1789,8 +1789,12 @@ void CIccUTF16String::Resize(size_t len)
   if (len>m_alloc) {
     size_t nAlloc = AllocSize(len+1);
 
-    m_str = (icUInt16Number*)realloc(m_str, nAlloc*sizeof(icUInt16Number));
-    m_alloc = nAlloc;
+    icUInt16Number* newStr = (icUInt16Number*)realloc(m_str, nAlloc*sizeof(icUInt16Number));
+    if(newStr)
+    {
+        m_str = newStr;
+        m_alloc = nAlloc;
+    }
   }
 
   if (len>m_len) {
@@ -1811,8 +1815,12 @@ size_t CIccUTF16String::WStrlen(const icUInt16Number *uzStr)
 CIccUTF16String& CIccUTF16String::operator=(const CIccUTF16String &wstr)
 {
   if (m_alloc<=wstr.m_alloc) {
-    m_str = (icUInt16Number*)realloc(m_str, wstr.m_alloc*sizeof(icUInt16Number));
-    m_alloc = wstr.m_alloc;
+    icUInt16Number* newStr = (icUInt16Number*)realloc(m_str, wstr.m_alloc*sizeof(icUInt16Number));
+    if(newStr)
+    {
+        m_str = newStr;
+        m_alloc = wstr.m_alloc;
+    }
   }
   m_len = wstr.m_len;
 
@@ -1834,8 +1842,12 @@ CIccUTF16String& CIccUTF16String::operator=(const icUInt16Number *uzStr)
   size_t nAlloc = AllocSize(n+1);
 
   if (m_alloc<=nAlloc) {
-    m_str = (icUInt16Number*)realloc(m_str, nAlloc*sizeof(icUInt16Number));
-    m_alloc =nAlloc;
+    icUInt16Number* newStr = (icUInt16Number*)realloc(m_str, nAlloc*sizeof(icUInt16Number));
+    if(newStr)
+    {
+        m_str = newStr;
+        m_alloc =nAlloc;
+    }
   }
   m_len = n;
 
@@ -1867,8 +1879,12 @@ void CIccUTF16String::FromUtf8(const char *szStr, size_t sizeSrc)
   if (sizeSrc) {
     size_t nAlloc = AllocSize(sizeSrc*2+2);
     if (m_alloc<=nAlloc) {
-      m_str = (icUInt16Number*)realloc(m_str, nAlloc*sizeof(icUInt16Number));
-      m_alloc = nAlloc;
+      icUInt16Number* newStr = (icUInt16Number*)realloc(m_str, nAlloc*sizeof(icUInt16Number));
+      if(newStr)
+      {
+        m_str = newStr;
+        m_alloc = nAlloc;
+      }
     }
     UTF16 *szDest = m_str;
     icConvertUTF8toUTF16((const UTF8 **)&szStr, (const UTF8 *)&szStr[sizeSrc], &szDest, &szDest[m_alloc], lenientConversion);
@@ -1901,8 +1917,12 @@ void CIccUTF16String::FromWString(const std::wstring &buf)
   if (sizeSrc) {
     size_t nAlloc = AllocSize(sizeSrc*2);
     if (m_alloc<=nAlloc) {
-      m_str = (icUInt16Number*)realloc(m_str, nAlloc*sizeof(icUInt16Number));
-      m_alloc = nAlloc;
+      icUInt16Number* newStr = (icUInt16Number*)realloc(m_str, nAlloc*sizeof(icUInt16Number));
+      if(newStr)
+      {
+          m_str = newStr;
+        m_alloc = nAlloc;
+      }
     }
     UTF16 *szDest = m_str;
     icConvertUTF32toUTF16((const UTF32 **)szStr, (const UTF32 *)&szStr[sizeSrc], &szDest, &szDest[m_alloc], lenientConversion);
