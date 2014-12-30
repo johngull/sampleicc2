@@ -1481,7 +1481,7 @@ CIccMpeCurveSet::CIccMpeCurveSet(const CIccMpeCurveSet &curveSet)
  ******************************************************************************/
 CIccMpeCurveSet &CIccMpeCurveSet::operator=(const CIccMpeCurveSet &curveSet)
 {
-  m_nReserved = m_nReserved;
+  m_nReserved = curveSet.m_nReserved;
 
   if (m_curve) {
       for (icUInt16Number i=0; i<m_nInputChannels; i++)
@@ -1492,7 +1492,8 @@ CIccMpeCurveSet &CIccMpeCurveSet::operator=(const CIccMpeCurveSet &curveSet)
   if (curveSet.m_nInputChannels) {
     int i;
 
-    m_nInputChannels = m_nOutputChannels = curveSet.m_nInputChannels;
+    m_nInputChannels = curveSet.m_nInputChannels;
+    m_nOutputChannels = curveSet.m_nInputChannels;
     m_curve = (icCurveSetCurvePtr*)calloc(m_nInputChannels, sizeof(icCurveSetCurvePtr));
     m_position = (icPositionNumber*)calloc(m_nInputChannels, sizeof(icPositionNumber));
 
