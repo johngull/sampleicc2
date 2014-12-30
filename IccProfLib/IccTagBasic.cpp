@@ -814,12 +814,13 @@ bool CIccTagTextDescription::Read(icUInt32Number size, CIccIO *pIO)
   icTagTypeSignature sig;
   icUInt32Number nEnd;
 
-  nEnd = pIO->Tell() + size;
 
   if (size<3*sizeof(icUInt32Number) || !pIO) {
     m_szText[0] = '\0';
     return false;
   }
+
+  nEnd = pIO->Tell() + size;
 
   icUInt32Number nSize;
 
