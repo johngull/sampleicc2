@@ -143,7 +143,7 @@ public:
 class CIccMultiProcessElement
 {
 public:
-  CIccMultiProcessElement() {}
+  CIccMultiProcessElement() : m_nReserved(0), m_nInputChannels(0), m_nOutputChannels(0) {}
 
   virtual ~CIccMultiProcessElement() {}
   
