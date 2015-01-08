@@ -269,7 +269,7 @@ public:
   *
   */
   static void PushFactory(IIccTagFactory *pFactory)
-      { CIccTagCreator::GetInstance()->CIccTagCreator::DoPushFactory(pFactory); }
+      { CIccTagCreator::GetInstance()->DoPushFactory(pFactory); }
 
   /**
   * Function: PopFactory()

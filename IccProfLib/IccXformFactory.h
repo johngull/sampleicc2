@@ -197,7 +197,7 @@ public:
   *
   */
   static void PushFactory(IIccXformFactory *pFactory)
-      { CIccXformCreator::GetInstance()->CIccXformCreator::DoPushFactory(pFactory); }
+      { CIccXformCreator::GetInstance()->DoPushFactory(pFactory); }
 
   /**
   * Function: PopFactory()
