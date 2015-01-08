@@ -830,6 +830,8 @@ protected:
   CIccCmm *m_pCmm;
 
   CIccPCS *m_pPCS;
+private:
+  CIccApplyCmm(const CIccApplyCmm &);
 };
 
 /**
@@ -946,6 +948,8 @@ protected:
   icRenderingIntent m_nLastIntent;
 
   CIccXformList *m_Xforms;
+private:
+  CIccCmm(const CIccCmm&);
 };
 
 //Forward Class for CIccApplyNamedColorCmm
